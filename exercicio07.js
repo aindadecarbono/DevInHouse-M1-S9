@@ -1,4 +1,5 @@
-// O exercício consiste em implementar o método requerido pela interface **Pessoa** às classes **Aluno** e **Funcionario**. O método deverá imprimir em um console.log todas as informações sobre o aluno e funcionário cadastrado.
+"use strict";
+exports.__esModule = true;
 var Aluno = /** @class */ (function () {
     function Aluno(nome, idade, rua, matricula, cadeiras) {
         this.nome = nome;

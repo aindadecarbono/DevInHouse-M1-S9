@@ -1,12 +1,4 @@
-// O exercício consiste em implementar o método requerido pela interface **Pessoa** às classes **Aluno** e **Funcionario**. O método deverá imprimir em um console.log todas as informações sobre o aluno e funcionário cadastrado.
-
-interface Pessoa{
-  nome: string;
-  idade: number;
-  rua: string;
-
-  cadastrar();
-}
+import { Pessoa } from "./exercicio08";
 
 class Aluno implements Pessoa{
   nome: string;
