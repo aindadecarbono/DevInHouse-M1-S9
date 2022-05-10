@@ -1,1 +1,3 @@
-<h2>Total da compra: {{ valorTotal }}</h2>
+<h2>Média: {{ media }}</h2>
+<h2 *ngIf="passou; else elseBlock">Estado: aprovado</h2>
+<ng-template #elseBlock>Estado: reprovado</ng-template>

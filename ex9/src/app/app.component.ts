@@ -1,48 +1,68 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from 'src/assets/exercicio09';
+import { Aluno,Nota } from 'src/assets/exercicio10';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, Produto{
-  title = 'ex9';
-  
-  nome: string;
-  valor: number;
-  codigo: number;
-  quantidade: number;
-  emEstoque: boolean;
-  valorTotal: number;
+export class AppComponent extends Aluno implements Nota, OnInit{
+  title = 'ex10';
+  cadeira: string = "";
+  ponto: number = 0;
+  aluno: Aluno = new Aluno("A",123);
+  media: number = 0;
+  passou: boolean = false;
 
-  sofa:Produto = {
-    nome: 'Sofá amarelo',
-    valor: 150,
-    codigo: 12345,
-    quantidade: 30,
-    emEstoque: true
+	constructor(){
+    super("", 0);
   }
 
-  // constructor(nome:string, valor: number, codigo: number, quantidade: number, emEstoque: boolean, valorTotal: number){
-  //   this.nome = nome;
-  //   this.valor = valor;
-  //   this.codigo = codigo;
-  //   this.quantidade = quantidade;
-  //   this.emEstoque = emEstoque;
-  //   this.valorTotal = valorTotal;
-  // }
+	calculaMedia(notas:any){
+
+		let arrayMedia:number[] = [];
+					let media:number = 0;
+	        for(let i=0; i<notas.length;i++){
+						arrayMedia.push (notas[i].ponto)
+						
+          }
+          
+					let initialValue = 0;
+					let somatorio = arrayMedia.reduce(
+						 (previousValue, currentValue) => previousValue + currentValue,initialValue);
+						
+         this.media = somatorio / notas.length
+				 this.passou = this.aprovado(media);
+	}
+   
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
-    this.comprar(this.sofa,30)
-    this.comprar(this.sofa,10)
-  }
-  
-  comprar(produto: Produto, quantidade: number) {
-    if(produto.emEstoque){
-      this.valorTotal = produto.valor*quantidade
-      produto.quantidade -= quantidade
-    }
+    let aluno1: Aluno = new Aluno("Jonas", 7);
+	        let notas: Nota[] = [
+	            {
+	                cadeira: "Geografia",
+	                ponto: 4,
+	                aluno: aluno1
+	            },
+	            {
+	                cadeira: "Geografia",
+	                ponto: 8,
+	                aluno: aluno1
+	            },
+	            {
+	                cadeira: "Geografia",
+	                ponto: 3,
+	                aluno: aluno1
+	            },
+	            {
+	                cadeira: "Geografia",
+	                ponto: 10,
+	                aluno: aluno1
+	            }
+	        ]
+
+					this.calculaMedia(notas)
+          
+					
   }
   
   
